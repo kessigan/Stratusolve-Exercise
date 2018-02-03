@@ -88,6 +88,10 @@
     });
     $('#saveTask').click(function() {
         //Assignment: Implement this functionality
+		$.post("update_task.php",{TaskName:document.getElementById("InputTaskName").value,TaskDescription:document.getElementById("InputTaskDescription").value}, function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+		});
+
         alert('Save... Id:'+currentTaskId);
         $('#myModal').modal('hide');
         updateTaskList();

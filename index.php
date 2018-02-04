@@ -87,8 +87,8 @@
         }
     });
     $('#saveTask').click(function() {
-        //Assignment: Implement this functionality
-		$.post("update_task.php",{TaskName:document.getElementById("InputTaskName").value,TaskDescription:document.getElementById("InputTaskDescription").value}, function(data, status){
+        //Assignment: Implement this functionality//
+		$.post("update_task.php",{Event:"Add",TaskName:document.getElementById("InputTaskName").value,TaskDescription:document.getElementById("InputTaskDescription").value}, function(data, status){
         alert("Data: " + data + "\nStatus: " + status);
 		});
 
@@ -100,6 +100,9 @@
         //Assignment: Implement this functionality
         alert('Delete... Id:'+currentTaskId);
         $('#myModal').modal('hide');
+		$.post("update_task.php",{Event:"Delete",TaskId:currentTaskId}, function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+		});
         updateTaskList();
     });
     function updateTaskList() {

@@ -14,10 +14,16 @@ $taskArray = json_decode($taskData);
 	$id = $_POST["TaskId"] - 1;
 	
 	if ($event == "Add"){
+	if ($id == -2){
 	$myObj->TaskId = sizeof($taskArray) + 1;
 	$myObj->TaskName = $name;
 	$myObj->TaskDescription = $description;
 	array_push($taskArray,$myObj);
+	}else{
+	$taskArray[$id]->TaskName = $name;
+	$taskArray[$id]->TaskDescription = $description;
+	}
+
 
 	}elseif ($event == "Delete"){
 		array_splice($taskArray,$id,1);

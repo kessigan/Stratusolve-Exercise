@@ -88,22 +88,25 @@
     });
     $('#saveTask').click(function() {
         //Assignment: Implement this functionality//
-		$.post("update_task.php",{Event:"Add",TaskName:document.getElementById("InputTaskName").value,TaskDescription:document.getElementById("InputTaskDescription").value}, function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
+		$.post("update_task.php",{Event:"Add",TaskId:currentTaskId,TaskName:document.getElementById("InputTaskName").value,TaskDescription:document.getElementById("InputTaskDescription").value}, function(data, status){
+        //alert("Data: " + data + "\nStatus: " + status);
 		});
 
-        alert('Save... Id:'+currentTaskId);
+        //alert('Save... Id:'+currentTaskId);
         $('#myModal').modal('hide');
         updateTaskList();
     });
     $('#deleteTask').click(function() {
-        //Assignment: Implement this functionality
-        alert('Delete... Id:'+currentTaskId);
+        //Assignment: Implement this functionality//
+        //alert('Delete... Id:'+currentTaskId);
         $('#myModal').modal('hide');
 		$.post("update_task.php",{Event:"Delete",TaskId:currentTaskId}, function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
+        //alert("Data: " + data + "\nStatus: " + status);
 		});
         updateTaskList();
+		//added a page reload as the time taked to update .txt file may be longer than updateTaskList()
+		//Therefore deletions do not show instantly
+		location.reload(true);
     });
     function updateTaskList() {
         $.post("list_tasks.php", function( data ) {

@@ -95,6 +95,7 @@
         //alert('Save... Id:'+currentTaskId);
         $('#myModal').modal('hide');
         updateTaskList();
+		location.reload(true);
     });
     $('#deleteTask').click(function() {
         //Assignment: Implement this functionality//
@@ -104,7 +105,7 @@
         //alert("Data: " + data + "\nStatus: " + status);
 		});
         updateTaskList();
-		//added a page reload as the time taked to update .txt file may be longer than updateTaskList()
+		//added a page reload as the time taken to update .txt file may be longer than updateTaskList()
 		//Therefore deletions do not show instantly
 		location.reload(true);
     });
